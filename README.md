@@ -3,9 +3,9 @@
 
 ### Description
 * This code performs different types of 2D convolutions given the input and kernel parameters. It currently supports `Conv2D` and `DepthwiseConv2D` with stride, kernel dilation and image padding options
-* The class implementation will be modified along the lines of `torch.nn.Conv2D` in order to enable comparison on this NumPy only implementation with that of PyTorch one, and seamless testing
+* The class implementation will be modified along the lines of `torch.nn.Conv2D` in order to enable comparison of this NumPy-only implementation with that of PyTorch one, and seamless testing
 * Can expect extensive refactoring of the existing code in the days to come
-* As part of refactoring, some code will be de-modularized"
+* As part of refactoring, some code will be de-modularized
 
 ### How to use
 * :warning: Please note that this code is under development
