@@ -2,7 +2,7 @@
 ## Implementation of 2D convolution using only NumPy, (being made) compatible with PyTorch `torch.nn.Conv2D`
 
 ### Description
-* This code performs different types of 2D convolutions given the input and kernel parameters. It currently supports `Conv2D` and `DepthwiseConv2D` with stride, kernel dilation and image padding options
+* This code performs different types of 2D convolutions given the input and kernel parameters. It currently supports `Conv2D` with `stride`, `padding`, `dilation`, and `groups` options
 * The class implementation will be modified along the lines of `torch.nn.Conv2D` in order to enable comparison of this NumPy-only implementation with that of PyTorch one, and seamless testing
 * Can expect extensive refactoring of the existing code in the days to come
 * As part of refactoring, some code will be de-modularized
@@ -18,12 +18,12 @@
 * `create_kernels()` creates random kernels of shape `[num_ker, ker_c, ker_h, ker_w]`
 * `create_output()` performs the convolution and gives output of shape `[inp_n, num_ker, (inp_h + 2*padding - ker_h)/stride + 1, (inp_w + 2*padding - ker_w)/stride + 1]`, where `inp_h`, `inp_w` are updated based on `padding` and `ker_h`, `ker_w` are updated based on `dilation`
 * Note that `ker_c = 1` and `inp_c = num_ker = out_c` always, for `DepthwiseConv2D` -->
-### Development
-* Enable verbose and debug modes by setting `verbose=True` and `debug=True` respectively
+<!-- ### Development
+* Enable verbose and debug modes by setting `verbose=True` and `debug=True` respectively -->
 
 ### Future work
 * Optimize code
-* Add code for different types of convolutions
+<!-- * Add code for different types of convolutions -->
 
 ### Acknowledgements
 This work is being done during my summer internship at DeGirum Corp., Santa Clara.
