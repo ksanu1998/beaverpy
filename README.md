@@ -1,6 +1,6 @@
 # conv-NumPy
-## An implementation of `Conv2D` and `MaxPool2D` using only NumPy
-### (being made) compatible with PyTorch `torch.nn.Conv2d` and `torch.nn.MaxPool2d` respectively
+## An implementation of `Conv2D`, `MaxPool2D` and `ReLU` using only NumPy
+### (being made) compatible with PyTorch `torch.nn.Conv2d`, `torch.nn.MaxPool2d` and `torch.nn.ReLU` respectively
 
 ### Description
 * This repo is organized into `.ipynb` notebooks and `.py` modules - users can run the notebooks directly or call classes implemented in the modules
@@ -8,6 +8,7 @@
 * `MaxPool2D` currently supports `stride`, `padding`, `dilation`, and `return_indices` options
 * `Conv2D` is tested for correctness with `torch.nn.functional.conv2d` - test code is included in the notebook and as standalone scripts
 * `MaxPool2D` is tested for correctness with `torch.nn.MaxPool2d` - test code is included in the notebook and as standalone scripts
+* `ReLU` is tested for correctness with `torch.nn.ReLU` - test code is included in the notebook and as standalone scripts
 * Users can take a glance through the notebooks to gain an overview of the logic - code is not optimized
 
 ### How to use
@@ -110,7 +111,7 @@ _output = maxpool2d.forward(_input)
 * Replace `torch.round()` with `np.allclose()` for tests
 * Implement `padding = 'same'` mode for `Conv2D`
 * Implement `ceil_mode` for `MaxPool2D`
-* Implement other operators such as `ReLU` etc.
+* Implement other operators
 * Optimize code
 * Provide code insights
 
