@@ -1,11 +1,14 @@
 # conv-NumPy
-## An implementation of 2D convolution using only NumPy, (being made) compatible with PyTorch `torch.nn.Conv2d`
+## An implementation of `Conv2D` and `MaxPool2D` using only NumPy
+### (being made) compatible with PyTorch `torch.nn.Conv2d` and `torch.nn.MaxPool2d` respectively
 
 ### Description
-* This code performs 2D convolution with the given input parameters
-* It currently supports `stride`, `padding`, `dilation`, and `groups` options
-* Tested for correctness with `torch.nn.functional.conv2d` and code included in the notebook
-* Take a glance through this code to understand how convolution with different options works
+* This repo is organized into `.ipynb` notebooks and `.py` modules - users can run the notebooks directly or call classes implemented in the modules
+* `Conv2D` currently supports `stride`, `padding`, `dilation`, and `groups` options
+* `MaxPool2D` currently supports `stride`, `padding`, `dilation`, and `return_indices` options
+* `Conv2D` is tested for correctness with `torch.nn.functional.conv2d` - test code is included in the notebook and as standalone scripts
+* `MaxPool2D` is tested for correctness with `torch.nn.MaxPool2d` - test code is included in the notebook and as standalone scripts
+* Users can take a glance through the notebooks to gain an overview of the logic - code is not optimized
 
 ### How to use
 :warning: Please note that this code is under development <br><br>
@@ -30,7 +33,7 @@ in_w = 4 # input weight
 #### Create a random input using the input parameters
 ``` python
 
-_input = np.random.rand(in_batches, in_channels, in_h, in_w) # define a random image based on the input parameters
+_input = np.random.rand(in_batches, in_channels, in_h, in_w)
 
 ```
 
@@ -60,17 +63,56 @@ _output = conv2d.forward(_input, kernels) # perform convolution
 
 ```
 
+Following is an example to use `MaxPool2D`, similar to `torch.nn.MaxPool2d`: <br>
+#### Define input parameters 
+``` python
+
+in_channels = 3 # input channels
+kernel_size = (6, 6) # kernel size
+
+padding = (1, 2) # padding (optional)
+stride = (1, 5) # stride (optional)
+dilation = (2, 1) # dilation factor (optional)
+return_indices = True # return max indices (optional)
+
+in_batches = 3 # input batches
+in_h = 11 # input height
+in_w = 8 # input weight
+
+```
+#### Create a random input using the input parameters
+``` python
+
+_input = np.random.rand(in_batches, in_channels, in_h, in_w)
+
+```
+
+#### Call an instance of `MaxPool2D` with the input parameters
+``` python
+
+maxpool2d = MaxPool2D(kernel_size, stride = stride, padding = padding, dilation = dilation)
+
+```
+
+#### Perform maxpooling
+
+``` python
+
+_output = maxpool2d.forward(_input)
+
+``` 
+
 ### Specifics
 * `[n, c, h, w]` format is used
-* For a description of the input parameters, refer to <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">PyTorch documentation</a> of `torch.nn.Conv2d`
+* For a description of the input parameters, refer to PyTorch documentation of <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">`torch.nn.Conv2d`</a> and <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">`torch.nn.MaxPool2d`</a>
 
 ### Future work
 * Replace `torch.round()` with `np.allclose()` for tests
-* Implement `padding = 'same'` mode
-* Implement other features and caveats offered by `nn.torch.Conv2d` (e.g., uniform sampling of kernel weights, `bias` etc.)
-* Implement other operators such as `MaxPool2d`, `ReLU` etc.
-* Provide code insights
+* Implement `padding = 'same'` mode for `Conv2D`
+* Implement `ceil_mode` for `MaxPool2D`
+* Implement other operators such as `ReLU` etc.
 * Optimize code
+* Provide code insights
 
 ### Acknowledgements
 This work is being done during my summer internship at <a href="https://www.degirum.ai/">DeGirum Corp.</a>, Santa Clara. 
