@@ -1,6 +1,6 @@
 # conv-NumPy
-## An implementation of `Conv2D`, `MaxPool2D`, `Linear`, and `ReLU` using only NumPy
-### (being made) compatible with PyTorch `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, and `torch.nn.ReLU` respectively
+## An implementation of `Conv2D`, `MaxPool2D`, `Linear`, `MSELoss`, and `ReLU` using only NumPy
+### (being made) compatible with PyTorch `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, `torch.nn.MSELoss`, and `torch.nn.ReLU` respectively
 
 ### Description
 * This repo is organized into `.ipynb` notebooks and `.py` modules - users can run the notebooks directly or call classes implemented in the modules
@@ -10,6 +10,8 @@
 * `MaxPool2D` is tested for correctness against `torch.nn.MaxPool2d`
 * `Linear` currently supports `bias` option
 * `Linear` is tested for correctness against `torch.nn.functional.linear`
+* `MSELoss` currently supports `reduction` option
+* `MSELoss` is tested for correctness against `torch.nn.MSELoss`
 * `ReLU` is tested for correctness against `torch.nn.ReLU`
 * Test code that checks for correctness of the implementation is included in the respective notebooks and also available as standalone `Pytest` scripts
 * Users can take a glance through the notebooks to gain an overview of the logic - code is not optimized
@@ -146,6 +148,31 @@ _output = linear.forward(_input, weights = _weights, bias_weights = _bias) # app
 
 ```
 
+#### Following is an example to use `MSELoss`, similar to `torch.nn.MSELoss`: <br>
+##### Create a random input and target
+``` python
+
+dimension = np.random.randint(500) # dimension of the input and target
+_input = np.random.rand(dimension) # define a random input of the above dimension
+_target= np.random.rand(dimension) # define a random target of the above dimension
+
+```
+##### Call an instance of `MSELoss` with the input parameters
+``` python
+
+mseloss = MSELoss()
+
+```
+
+##### Compue MSE loss
+
+``` python
+
+_output = mseloss.forward(_input, _target)
+
+``` 
+
+
 #### Following is an example to use `ReLU`, similar to `torch.nn.ReLU`: <br>
 ##### Create a random input
 ``` python
@@ -170,7 +197,7 @@ _output = relu.forward(_input)
 
 ### Specifics
 * `[n, c, h, w]` format is used
-* For a description of the input parameters, refer to PyTorch documentation of <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">`torch.nn.Conv2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">`torch.nn.MaxPool2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear">`torch.nn.Linear`</a>, and <a href="https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html">`torch.nn.ReLU`</a>
+* For a description of the input parameters, refer to PyTorch documentation of <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">`torch.nn.Conv2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">`torch.nn.MaxPool2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear">`torch.nn.Linear`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html">`torch.nn.MSELoss`</a>, and <a href="https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html">`torch.nn.ReLU`</a>
 
 ### Future work
 * Replace `torch.round()` with `np.allclose()` for tests
@@ -188,4 +215,4 @@ This work is being done during my summer internship at <a href="https://www.degi
 * If you find bugs, create a pull request with a description of the bug and the proposed changes (code optimization requests will not be entertained for now, for reasons that will be provided soon)
 * Do have a look at the <a href="https://ksanu1998.github.io/">author's webpage</a> for other interesting works!
 
-`README` last updated on 06/01/2023
+`README` last updated on 06/02/2023
