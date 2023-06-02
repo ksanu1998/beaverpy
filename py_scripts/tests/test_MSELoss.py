@@ -8,13 +8,13 @@ from tqdm import tqdm
 def test_sweep():
     ''' sweep different input parameters and test by comparing outputs of ReLU and PyTorch '''
     
-    num_tests = 1000
+    num_tests = 10000
     num_passed = 0
     print('Number of tests: {}\n\n'.format(num_tests))
     
     for i in tqdm(range(num_tests)):
         _reduction = np.random.choice(['mean', 'sum', 'none'])
-        dimension = np.random.randint(500) # dimension of the input and target
+        dimension = np.random.randint(500) + 1 # dimension of the input and target
         _input = np.random.rand(dimension) # define a random input of the above dimension
         _target= np.random.rand(dimension) # define a random target of the above dimension
         print('Test: {}\nDimension : {}, `reduction`: {}'.format(i, dimension, _reduction))
