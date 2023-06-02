@@ -41,4 +41,3 @@ def test_sweep():
 
     print('{} out of {} ({}%) tests passed'.format(num_passed, num_tests, float(100 * num_passed / num_tests)))
     assert num_passed == num_tests
-    
