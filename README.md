@@ -1,6 +1,6 @@
 # conv-NumPy
-## An implementation of `Conv2D`, `MaxPool2D`, `Linear`, `MSELoss`, and `ReLU` using only NumPy
-### (being made) compatible with PyTorch `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, `torch.nn.MSELoss`, and `torch.nn.ReLU` respectively
+## An implementation of `Conv2D`, `MaxPool2D`, `Linear`, `MSELoss`, `ReLU`, and `Softmax` using only NumPy
+### (being made) compatible with PyTorch `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, `torch.nn.MSELoss`, `torch.nn.ReLU`, `torch.nn.Softmax` respectively
 
 ### Description
 * This repo is organized into `.ipynb` notebooks and `.py` modules - users can run the notebooks directly or call classes implemented in the modules
@@ -13,6 +13,8 @@
 * `MSELoss` currently supports `reduction` option
 * `MSELoss` is tested for correctness against `torch.nn.MSELoss`
 * `ReLU` is tested for correctness against `torch.nn.ReLU`
+* `Softmax` currently supports `dim` option
+* `Softmax` is tested for correctness against `torch.nn.Softmax`
 * Test code that checks for correctness of the implementation is included in the respective notebooks and also available as standalone `Pytest` scripts
 * Users can take a glance through the notebooks to gain an overview of the logic - code is not optimized
 
@@ -172,7 +174,6 @@ _output = mseloss.forward(_input, _target)
 
 ``` 
 
-
 #### Following is an example to use `ReLU`, similar to `torch.nn.ReLU`: <br>
 ##### Create a random input
 ``` python
@@ -195,9 +196,32 @@ _output = relu.forward(_input)
 
 ``` 
 
+#### Following is an example to use `Softmax`, similar to `torch.nn.Softmax`: <br>
+##### Create a random input and dimension 
+``` python
+
+_input = np.random.rand(1, 2, 1, 3, 4)
+_dim = np.random.randint(len(_input))
+
+```
+##### Call an instance of `Softmax` with the input parameters
+``` python
+
+softmax = Softmax(dim = _dim)
+
+```
+
+##### Apply Softmax activation
+
+``` python
+
+_output = softmax.forward(_input)
+
+``` 
+
 ### Specifics
 * `[n, c, h, w]` format is used
-* For a description of the input parameters, refer to PyTorch documentation of <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">`torch.nn.Conv2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">`torch.nn.MaxPool2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear">`torch.nn.Linear`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html">`torch.nn.MSELoss`</a>, and <a href="https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html">`torch.nn.ReLU`</a>
+* For a description of the input parameters, refer to PyTorch documentation of <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">`torch.nn.Conv2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">`torch.nn.MaxPool2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear">`torch.nn.Linear`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html">`torch.nn.MSELoss`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html">`torch.nn.ReLU`</a>, and <a href="https://pytorch.org/docs/stable/generated/torch.nn.Softmax.html">`torch.nn.Softmax`</a>
 
 ### Future work
 * Replace `torch.round()` with `np.allclose()` for tests
@@ -215,4 +239,4 @@ This work is being done during my summer internship at <a href="https://www.degi
 * If you find bugs, create a pull request with a description of the bug and the proposed changes (code optimization requests will not be entertained for now, for reasons that will be provided soon)
 * Do have a look at the <a href="https://ksanu1998.github.io/">author's webpage</a> for other interesting works!
 
-`README` last updated on 06/02/2023
+`README` last updated on 06/05/2023
