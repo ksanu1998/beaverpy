@@ -1,6 +1,6 @@
 # conv-NumPy
-## An implementation of `Conv2D`, `MaxPool2D`, `Linear`, `MSELoss`, `ReLU`, `Sigmoid`, and `Softmax` using only NumPy
-### (being made) compatible with PyTorch `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, `torch.nn.MSELoss`, `torch.nn.ReLU`, `torch.nn.Sigmoid`, and `torch.nn.Softmax` respectively
+## An implementation of `Conv2D`, `MaxPool2D`, `Linear`, `MSELoss`, `CosineSimilarity`, `ReLU`, `Sigmoid`, and `Softmax` using only NumPy
+### (being made) compatible with PyTorch `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, `torch.nn.MSELoss`, `torch.nn.CosineSimilarity`, `torch.nn.ReLU`, `torch.nn.Sigmoid`, and `torch.nn.Softmax` respectively
 
 ### Description
 * This repo is organized into `.ipynb` notebooks and `.py` modules - users can run the notebooks directly or call classes implemented in the modules
@@ -12,6 +12,8 @@
 * `Linear` is tested for correctness against `torch.nn.functional.linear`
 * `MSELoss` currently supports `reduction` option
 * `MSELoss` is tested for correctness against `torch.nn.MSELoss`
+* `CosineSimilarity` currently supports `dim`, and `eps` options
+* `CosineSimilarity` is tested for correctness against `torch.nn.CosineSimilarity`
 * `ReLU` is tested for correctness against `torch.nn.ReLU`
 * `Sigmoid` is tested for correctness against `torch.nn.Sigmoid`
 * `Softmax` currently supports `dim` option
@@ -175,6 +177,33 @@ _output = mseloss.forward(_input, _target)
 
 ``` 
 
+#### Following is an example to use `CosineSimilarity`, similar to `torch.nn.CosineSimilarity`: <br>
+##### Create random input
+``` python
+
+num_dim = np.random.randint(6) + 1 # number of input dimensions
+shape = tuple(np.random.randint(5) + 1 for _ in range(num_dim)) # shape of input
+_input1 = np.random.rand(*shape) # generate an input based on the dimensions and shape
+_input2 = np.random.rand(*shape) # generate another input based on the dimensions and shape
+_dim = np.random.randint(num_dim) # dimension along which CosineSimilarity is to be computed
+_eps = np.random.uniform(low = 1e-10, high = 1e-6)
+        
+```
+##### Call an instance of `CosineSimilarity` with the input parameters
+``` python
+
+cosinesimilarity = CosineSimilarity(dim = _dim, eps = _eps)
+
+```
+
+##### Compue CosineSimilarity
+
+``` python
+
+_output = cosinesimilarity.forward(_input1, _input2)
+
+``` 
+
 #### Following is an example to use `ReLU`, similar to `torch.nn.ReLU`: <br>
 ##### Create a random input
 ``` python
@@ -244,7 +273,7 @@ _output = softmax.forward(_input)
 
 ### Specifics
 * `[n, c, h, w]` format is used
-* For a description of the input parameters, refer to PyTorch documentation of <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">`torch.nn.Conv2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">`torch.nn.MaxPool2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear">`torch.nn.Linear`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html">`torch.nn.MSELoss`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html">`torch.nn.ReLU`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html#torch.nn.Sigmoid">`torch.nn.Sigmoid`</a>, and <a href="https://pytorch.org/docs/stable/generated/torch.nn.Softmax.html">`torch.nn.Softmax`</a>
+* For a description of the input parameters, refer to PyTorch documentation of <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">`torch.nn.Conv2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html">`torch.nn.MaxPool2d`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear">`torch.nn.Linear`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html">`torch.nn.MSELoss`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.CosineSimilarity.html">`torch.nn.CosineSimilarity`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html">`torch.nn.ReLU`</a>, <a href="https://pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html#torch.nn.Sigmoid">`torch.nn.Sigmoid`</a>, and <a href="https://pytorch.org/docs/stable/generated/torch.nn.Softmax.html">`torch.nn.Softmax`</a>
 
 ### Future work
 * Replace `torch.round()` with `np.allclose()` for tests
@@ -262,4 +291,4 @@ This work is being done during my summer internship at <a href="https://www.degi
 * If you find bugs, create a pull request with a description of the bug and the proposed changes (code optimization requests will not be entertained for now, for reasons that will be provided soon)
 * Do have a look at the <a href="https://ksanu1998.github.io/">author's webpage</a> for other interesting works!
 
-`README` last updated on 06/06/2023
+`README` last updated on 06/07/2023
