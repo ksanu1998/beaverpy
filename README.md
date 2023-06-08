@@ -1,6 +1,6 @@
-# conv-NumPy
-## An implementation of `Conv2D`, `MaxPool2D`, `Linear`, `MSELoss`, `CosineSimilarity`, `ReLU`, `Sigmoid`, and `Softmax` using only NumPy
-### (being made) compatible with PyTorch `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, `torch.nn.MSELoss`, `torch.nn.CosineSimilarity`, `torch.nn.ReLU`, `torch.nn.Sigmoid`, and `torch.nn.Softmax` respectively
+# beaverpy
+## An implementation of some PyTorch operators using only NumPy
+### Provides `Conv2D`, `MaxPool2D`, `Linear`, `MSELoss`, `CosineSimilarity`, `ReLU`, `Sigmoid`, and `Softmax`, that are compatible with `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, `torch.nn.MSELoss`, `torch.nn.CosineSimilarity`, `torch.nn.ReLU`, `torch.nn.Sigmoid`, and `torch.nn.Softmax` respectively
 
 ### Description
 * This repo is organized into `.ipynb` notebooks and `.py` modules - users can run the notebooks directly or call classes implemented in the modules
@@ -291,4 +291,4 @@ This work is being done during my summer internship at <a href="https://www.degi
 * If you find bugs, create a pull request with a description of the bug and the proposed changes (code optimization requests will not be entertained for now, for reasons that will be provided soon)
 * Do have a look at the <a href="https://ksanu1998.github.io/">author's webpage</a> for other interesting works!
 
-`README` last updated on 06/07/2023
+`README` last updated on 06/08/2023
