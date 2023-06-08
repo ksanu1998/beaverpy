@@ -1,9 +1,24 @@
 # beaverpy
 ## An implementation of some PyTorch operators using only NumPy
-### Provides `Conv2D`, `MaxPool2D`, `Linear`, `MSELoss`, `CosineSimilarity`, `ReLU`, `Sigmoid`, and `Softmax`, that are compatible with `torch.nn.Conv2d`, `torch.nn.MaxPool2d`, `torch.nn.Linear`, `torch.nn.MSELoss`, `torch.nn.CosineSimilarity`, `torch.nn.ReLU`, `torch.nn.Sigmoid`, and `torch.nn.Softmax` respectively
 
+### How to install
+```console
+
+pip3 install beaverpy
+
+```
 ### Description
-* This repo is organized into `.ipynb` notebooks and `.py` modules - users can run the notebooks directly or call classes implemented in the modules
+* Implemented operators (PyTorch equivalents)
+     - `Conv2D` (`torch.nn.Conv2d`)
+     - `MaxPool2D` (`torch.nn.MaxPool2d`) 
+     - `Linear` (`torch.nn.Linear`)
+     - `MSELoss` (`torch.nn.MSELoss`)
+     - `CosineSimilarity` (`torch.nn.CosineSimilarity`)
+     - `ReLU` (`torch.nn.ReLU`)
+     - `Sigmoid` (`torch.nn.Sigmoid`) 
+     - `Softmax` (`torch.nn.Softmax`)
+
+* This repository is organized into `.ipynb` notebooks and `.py` modules - users can either run the notebooks directly or call classes implemented in the modules
 * `Conv2D` currently supports `stride`, `padding`, `dilation`, and `groups` options
 * `Conv2D` is tested for correctness against `torch.nn.functional.conv2d`
 * `MaxPool2D` currently supports `stride`, `padding`, `dilation`, and `return_indices` options
@@ -22,8 +37,15 @@
 * Users can take a glance through the notebooks to gain an overview of the logic - code is not optimized
 
 ### How to use
-:warning: Please note that this code is under development <br>
+<!-- :warning: Please note that this code is under development <br> -->
+
 #### Following is an example to use `Conv2D`, similar to `torch.nn.Conv2d`: <br>
+##### Import the package
+``` python
+
+from beaverpy import Conv2D as Conv2D
+
+```
 ##### Define input parameters 
 ``` python
 
