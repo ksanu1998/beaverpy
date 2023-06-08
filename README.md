@@ -207,7 +207,7 @@ shape = tuple(np.random.randint(5) + 1 for _ in range(num_dim)) # shape of input
 _input1 = np.random.rand(*shape) # generate an input based on the dimensions and shape
 _input2 = np.random.rand(*shape) # generate another input based on the dimensions and shape
 _dim = np.random.randint(num_dim) # dimension along which CosineSimilarity is to be computed (optional)
-_eps = np.random.uniform(low = 1e-10, high = 1e-6) (optional)
+_eps = np.random.uniform(low = 1e-10, high = 1e-6) # (optional)
         
 ```
 ##### Call an instance of `CosineSimilarity` with the input parameters
@@ -275,7 +275,7 @@ _output = sigmoid.forward(_input)
 ``` python
 
 _input = np.random.rand(1, 2, 1, 3, 4)
-_dim = np.random.randint(len(_input)) (optional)
+_dim = np.random.randint(len(_input)) # (optional)
 
 ```
 ##### Call an instance of `Softmax` with the input parameters
