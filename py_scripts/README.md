@@ -2,6 +2,7 @@
 ### 
 
 ### Description
+#### v0.1.0
 `beaverpy` is an implementation of PyTorch operators using only NumPy. <br>
 Implemented operators (their PyTorch equivalents) include the following:
 * Layers
@@ -296,6 +297,7 @@ _output = softmax.forward(_input)
 * Replace `torch.round()` with `np.allclose()` for tests
 * Implement other operators
 * Optimize code
+* For newer builds of this package that are under development and not yet available on PyPI, please visit the <a href="https://github.com/ksanu1998/beaverpy">GitHub repository</a>
 
 ### Acknowledgements
 This work is being done during my summer internship at <a href="https://www.degirum.ai/">DeGirum Corp.</a>, Santa Clara. 
