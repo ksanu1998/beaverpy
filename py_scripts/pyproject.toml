@@ -7,11 +7,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "beaverpy"
-version = "0.0.1"
+version = "0.1.0"
 authors = [
   { name="Sai Anuroop Kesanapalli", email="ksanu1998@gmail.com" },
 ]
-description = "An implementation of some PyTorch operators using only NumPy"
+description = "`beaverpy` is an implementation of PyTorch operators using only NumPy"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -21,5 +21,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/ksanu1998/conv-NumPy"
-"Bug Tracker" = "https://github.com/ksanu1998/conv-NumPy/issues"
+"Homepage" = "https://github.com/ksanu1998/beaverpy"
+"Bug Tracker" = "https://github.com/ksanu1998/beaverpy/issues"
