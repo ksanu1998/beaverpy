@@ -1,6 +1,25 @@
 [build-system]
 requires = [
-    "setuptools>=42",
+    "setuptools>=61.0",
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "beaverpy"
+version = "0.0.1"
+authors = [
+  { name="Sai Anuroop Kesanapalli", email="ksanu1998@gmail.com" },
+]
+description = "An implementation of some PyTorch operators using only NumPy"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ksanu1998/conv-NumPy"
+"Bug Tracker" = "https://github.com/ksanu1998/conv-NumPy/issues"
