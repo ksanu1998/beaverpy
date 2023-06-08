@@ -88,7 +88,7 @@ _output = conv2d.forward(_input) # perform convolution
 
 kernels = []
 for k in range(out_channels):
-    kernel = np.random.rand(int(in_channels / groups), kernel_size[0], kernel_size[1]) # define a random kernel based on the kernel parameters
+    kernel = np.random.rand(int(in_channels / _groups), kernel_size[0], kernel_size[1]) # define a random kernel based on the kernel parameters
     kernels.append(kernel)
 _output = conv2d.forward(_input, kernels) # perform convolution
 
