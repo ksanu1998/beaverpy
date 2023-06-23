@@ -10,6 +10,7 @@ Implemented operators (their PyTorch equivalents) include the following:
    - `Linear` ([`torch.nn.Linear`](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html))
 * Loss/Distance Functions
    - `MSELoss` ([`torch.nn.MSELoss`](https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html))
+   - `KLDivLoss` ([`torch.nn.KLDivLoss`](https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html))
    - `CosineSimilarity` ([`torch.nn.CosineSimilarity`](https://pytorch.org/docs/stable/generated/torch.nn.CosineSimilarity.html))
 * Activations
    - `ReLU` ([`torch.nn.ReLU`](https://pytorch.org/docs/stable/generated/torch.nn.ReLU.htm))
@@ -24,6 +25,7 @@ Implemented operators (their PyTorch equivalents) include the following:
 * `MaxPool2D` &mdash; `stride`, `padding`, `dilation`, `return_indices`
 * `Linear` &mdash; `bias`
 * `MSELoss` &mdash; `reduction`
+* `KLDivLoss` &mdash; `reduction`, `log_target`
 * `CosineSimilarity` &mdash; `dim`, `eps`
 * `Softmax` &mdash; `dim`
 
@@ -197,6 +199,32 @@ _output = mseloss.forward(_input, _target)
 
 ``` 
 
+#### Following is an example to use `KLDivLoss`: <br>
+
+##### Create a random input and target
+``` python
+
+_reduction = np.random.choice(['mean', 'sum', 'none'])
+_log_target = bool(random.getrandbits(1))
+dimension = np.random.randint(500) + 1 # dimension of the input and target
+_input = np.random.rand(dimension) # define a random input of the above dimension
+_target= np.random.rand(dimension) # define a random target of the above dimension
+
+```
+##### Call an instance of `KLDivLoss` with the input parameters
+``` python
+
+kldivloss = KLDivLoss(reduction = _reduction, log_target = _log_target)
+
+```
+##### Compue KL Divergence loss
+
+``` python
+
+_output = kldivloss.forward(_input, _target)
+
+```
+
 #### Following is an example to use `CosineSimilarity`: <br>
 
 ##### Create random input
@@ -305,4 +333,4 @@ This work is being done during my summer internship at <a href="https://www.degi
 * If you find bugs, create a pull request with a description of the bug and the proposed changes
 * Do have a look at the <a href="https://ksanu1998.github.io/">author's webpage</a> for other interesting works!
 
-`README` last updated on 06/08/2023
+`README` last updated on 06/23/2023
