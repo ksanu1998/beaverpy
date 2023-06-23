@@ -1,4 +1,4 @@
-from py_scripts.src.Conv2D import Conv2D
+from py_scripts.src.beaverpy.Conv2D import Conv2D
 import numpy as np
 import pytest
 import torch

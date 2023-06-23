@@ -1,19 +1,21 @@
-from py_scripts.src.beaverpy.MSELoss import MSELoss
+from py_scripts.src.beaverpy.KLDivLoss import KLDivLoss
 import numpy as np
 import pytest
-import torch
-from tqdm import tqdm
+import random
+import torch # needed for tests
+from tqdm import tqdm # needed for tests
 
 @pytest.mark.sweep
 def test_sweep():
-    ''' sweep different input parameters and test by comparing outputs of ReLU and PyTorch '''
+    ''' sweep different input parameters and test by comparing outputs of KLDivLoss and PyTorch '''
     
-    num_tests = 10000
+    num_tests = 1000
     num_passed = 0
     print('Number of tests: {}\n\n'.format(num_tests))
     
     for i in tqdm(range(num_tests)):
         _reduction = np.random.choice(['mean', 'sum', 'none'])
+        _log_target = bool(random.getrandbits(1))
         dimension = np.random.randint(500) + 1 # dimension of the input and target
         _input = np.random.rand(dimension) # define a random input of the above dimension
         _target= np.random.rand(dimension) # define a random target of the above dimension
@@ -21,14 +23,14 @@ def test_sweep():
         
         try:
             # compute MSE loss using the random input and target
-            mseloss = MSELoss(reduction = _reduction) # call an instance of the class
-            _output = mseloss.forward(_input, _target) # compute MSE loss
+            kldivloss = KLDivLoss(reduction = _reduction, log_target = _log_target) # call an instance of the class
+            _output = kldivloss.forward(_input, _target) # compute KL Divergence loss
 
 
             # get PyTorch output with the same random inputs as above
             x = torch.DoubleTensor(_input)
             y = torch.DoubleTensor(_target)
-            loss = torch.nn.MSELoss(reduction = _reduction)
+            loss = torch.nn.KLDivLoss(reduction = _reduction, log_target = _log_target)
             output = loss(x, y)
 
             
@@ -49,3 +51,7 @@ def test_sweep():
 
     print('{} out of {} ({}%) tests passed'.format(num_passed, num_tests, float(100 * num_passed / num_tests)))
     assert num_passed == num_tests
+
+
+
+

@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-from py_scripts.src.Linear import Linear
+from py_scripts.src.beaverpy.Linear import Linear
 import numpy as np
 import pytest
 import torch

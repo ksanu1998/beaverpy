@@ -1,4 +1,4 @@
-from py_scripts.src.Softmax import Softmax
+from py_scripts.src.beaverpy.Softmax import Softmax
 import numpy as np
 import pytest
 import torch

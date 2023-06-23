@@ -1,4 +1,4 @@
-from py_scripts.src.CosineSimilarity import CosineSimilarity
+from py_scripts.src.beaverpy.CosineSimilarity import CosineSimilarity
 import numpy as np
 import pytest
 import torch

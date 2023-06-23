@@ -1,4 +1,4 @@
-from py_scripts.src.ReLU import ReLU
+from py_scripts.src.beaverpy.ReLU import ReLU
 import numpy as np
 import pytest
 import torch

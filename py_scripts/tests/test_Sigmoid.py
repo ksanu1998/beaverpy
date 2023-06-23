@@ -1,4 +1,4 @@
-from py_scripts.src.Sigmoid import Sigmoid
+from py_scripts.src.beaverpy.Sigmoid import Sigmoid
 import numpy as np
 import pytest
 import torch

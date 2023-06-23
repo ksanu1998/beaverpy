@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-from py_scripts.src.MaxPool2D import MaxPool2D
+from py_scripts.src.beaverpy.MaxPool2D import MaxPool2D
 import numpy as np
 import pytest
 import torch
